@@ -1,14 +1,6 @@
 #@ load("/values.star", "values")
 #@ load("@ytt:overlay", "overlay")
 
-#@overlay/match by=overlay.subset({"kind": "Namespace"})
----
-#@overlay/replace
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: #@ values.loadBalancerAndIngressService.namespace
-
 #@overlay/match by=overlay.subset({"kind": "StatefulSet", "metadata": {"name": "ako"}})
 ---
 apiVersion: apps/v1
